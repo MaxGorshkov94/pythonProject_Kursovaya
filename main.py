@@ -1,5 +1,5 @@
 import requests
-
+import time
 
 class YaUploader:
     def __init__(self, token: str):
@@ -132,7 +132,7 @@ def cycle(yandex, vk, album_id):
     """Функция выгружает фото из альбома "album_id" на Я.Диск в корень, присваивая имена по количеству лайков """
     photo_list = vk.decomposer(album_id)
     for photo in photo_list:
-        file_path = "/" + str(photo["likes"]) + ".jpg"
+        file_path = "/photos/" + "photo_" + str(time.time()) + "_" + str(photo["likes"]) + ".jpg"
         yandex.link_upload(photo['src'], file_path)
 
 
